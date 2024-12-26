@@ -39,6 +39,19 @@ window.addEventListener('DOMContentLoaded', event => {
     // Change background every 10 seconds
     setInterval(changeBackground, 10000);
 
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const link = document.getElementById('downloadLink');
+
+    if (/android/i.test(userAgent)) {
+        // Set link for Google Play Store
+        link.href = "https://play.google.com/store/apps/details?id=com.whatsapp";
+    } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        // Set link for Apple App Store
+        link.href = "https://apps.apple.com/app/whatsapp-messenger/id310633997";
+    } else {
+        // Set link for WhatsApp web
+        link.href = "https://www.whatsapp.com/";
+    }
 
     // Navbar shrink function
     var navbarShrink = function () {

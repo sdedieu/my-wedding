@@ -12802,6 +12802,12 @@ body {
   padding: 10rem 0;
 }
 
+.infos-pratiques-section ol {
+  text-align: justify;
+  margin: auto;
+  width: 300px;
+}
+
 .infos-pratiques-section .featured-text {
   padding: 2rem;
 }
