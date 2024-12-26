@@ -9,6 +9,37 @@
 
 window.addEventListener('DOMContentLoaded', event => {
 
+    const header = document.querySelector('header');
+    const images = [
+        './assets/img/bg-1.jpg',
+        './assets/img/bg-2.jpg',
+        './assets/img/bg-3.jpg'
+    ];
+    let currentIndex = 0;
+
+    // Prefetch images
+    images.forEach((image) => {
+        const img = new Image();
+        img.src = image;
+    });
+
+    // Function to change background
+    const changeBackground = () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        header.style.background = `
+        linear-gradient(rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 70%, rgb(0, 0, 0) 100%) 0% 0%, 
+        url("${images[currentIndex]}")
+      `;
+        header.style.backgroundPosition = 'center';
+        header.style.backgroundRepeat = 'no-repeat';
+        header.style.backgroundAttachment = 'scroll';
+        header.style.backgroundSize = 'cover';
+    };
+
+    // Change background every 10 seconds
+    setInterval(changeBackground, 10000);
+
+
     // Navbar shrink function
     var navbarShrink = function () {
         const navbarCollapsible = document.body.querySelector('#mainNav');
@@ -50,27 +81,27 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         });
     });
-/*
-    let audio;
-
-    const audioElement = document.getElementById('sound-button');
-
-    window.addEventListener('click', () => {
-        if(!audio){
-            audio = new Audio('./assets/audio/sound.mp3');
-            audio.play();
-            audioElement.innerHTML = `<i class="nav-link nav-icon fa-solid fa-volume-high"></i>`
-        }
-    });
-
-    audioElement.addEventListener('click', () => {
-        if(audio.paused) {
-            audio.play();
-            audioElement.innerHTML = `<i class="nav-link nav-icon fa-solid fa-volume-high"></i>`
-        } else {
-            audio.pause();
-            audioElement.innerHTML = `<i class="nav-link nav-icon fa-solid fa-volume-xmark"></i>`
-        }
-    })
-*/
+    /*
+        let audio;
+    
+        const audioElement = document.getElementById('sound-button');
+    
+        window.addEventListener('click', () => {
+            if(!audio){
+                audio = new Audio('./assets/audio/sound.mp3');
+                audio.play();
+                audioElement.innerHTML = `<i class="nav-link nav-icon fa-solid fa-volume-high"></i>`
+            }
+        });
+    
+        audioElement.addEventListener('click', () => {
+            if(audio.paused) {
+                audio.play();
+                audioElement.innerHTML = `<i class="nav-link nav-icon fa-solid fa-volume-high"></i>`
+            } else {
+                audio.pause();
+                audioElement.innerHTML = `<i class="nav-link nav-icon fa-solid fa-volume-xmark"></i>`
+            }
+        })
+    */
 });
