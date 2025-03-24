@@ -13,7 +13,6 @@ window.addEventListener('DOMContentLoaded', event => {
     const images = [
         './assets/img/bg-1.jpg',
         './assets/img/bg-2.jpg',
-        './assets/img/bg-3.jpg'
     ];
     let currentIndex = 0;
 
